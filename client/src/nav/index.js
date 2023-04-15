@@ -1,16 +1,17 @@
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, 
-  Menu, MenuItem, Button, Tooltip, Avatar } from '@mui/material';
+  Menu, MenuList, MenuItem, Popper, Paper, Button, Tooltip, Avatar, TextField } from '@mui/material';
 import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
+import { color } from '@mui/system';
 
 const pages = [
   ['Services', 'services'], 
   ['Make Appointment', 'appointment'], 
   ['About Us', 'about']
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Account', 'Logout'];
 
 //ResponsiveAppBar Template taken and modified from Material UI App Bar example
 //https://mui.com/material-ui/react-app-bar/
@@ -19,6 +20,9 @@ const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const loginRef = React.useRef(null);
+  const [signedIn, processLogin] = React.useState(false);
+  const [showLogin, showLoginFunction] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,12 +42,25 @@ const navigate = useNavigate();
     setAnchorElUser(null);
   };
 
+  const handleOpenLogin = (event) => {
+    showLoginFunction((prev) => !prev);
+    if(showLogin) {
+      processLogin((prev) => !prev)
+    }
+  }
+
+  const handleLogout = (event) => {
+    setAnchorElUser(null);
+    processLogin((prev) => !prev)
+  }
+
   return (
     <>
-      <AppBar position="static">
+      <AppBar ref={loginRef} position="static" sx={{bgcolor: 'primary.main', color: 'black.main'}}>
         <Container maxWidth="x1">
             <Toolbar disableGutters>
-              <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              {/*Company name for full display*/}
+              <DriveEtaIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
               <Typography
                 variant="h6"
                 noWrap
@@ -55,13 +72,13 @@ const navigate = useNavigate();
                   fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
-                  color: 'inherit',
+                  color: 'black.main',
                   textDecoration: 'none',
                 }}
               >
                 COMPANY NAME
               </Typography>
-              {/*Menu for samll display*/}
+              {/*Drop down menu for samll display*/}
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                   size="large"
@@ -101,7 +118,8 @@ const navigate = useNavigate();
                   }
                 </Menu>
               </Box>
-              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              <DriveEtaIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              {/*Company name for small display */}
               <Typography
                 variant="h5"
                 noWrap
@@ -126,18 +144,67 @@ const navigate = useNavigate();
                     <Button
                       key={page[0]}
                       onClick={() => handleCloseNavMenu(page)}
-                      sx={{ my: 2, color: 'white', display: 'block' }}
+                      sx={{ my: 2, color: 'black.main', display: 'block' }}
                     >
                       {page[0]}
                     </Button>))
                 }
               </Box>
+              {/*Login / profile components */}
               <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
+                {signedIn ?
+                <Tooltip title="Open settings"> 
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt="Remy Sharp"/>
                   </IconButton>
                 </Tooltip>
+                 : !showLogin 
+                 ? <Button 
+                    variant="contained"
+                    onClick={handleOpenLogin}
+                    sx={{
+                    my: 2,
+                    bgcolor: 'primary.darker',
+                    color:'white.main',
+                    fontWeight: 'bold', 
+                    display: 'block'
+                    }}
+                  >
+                  Login
+                  </Button> 
+                  :
+                  <Box>
+                    <Button
+                    variant="contained"
+                    onClick={handleOpenLogin}
+                    sx={{
+                    my: 2,
+                    bgcolor: 'primary.darker',
+                    color:'white.main',
+                    fontWeight: 'bold', 
+                    display: 'block'
+                    }}
+                    >
+                    Submit
+                    </Button>
+                    <Popper
+                      open={showLogin}
+                      anchorEl={loginRef.current}
+                      placement='bottom-end'
+                    >
+                      <Paper>
+                        <MenuList>
+                          <MenuItem>
+                            <TextField required label="Username"/>
+                          </MenuItem>
+                          <MenuItem>
+                            <TextField required label="Passowrd"/>
+                          </MenuItem>
+                        </MenuList>
+                      </Paper>
+                    </Popper>
+                  </Box>
+                  } 
                 <Menu
                   sx={{ mt: '45px' }}
                   id="menu-appbar"
@@ -154,11 +221,12 @@ const navigate = useNavigate();
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Account</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleLogout}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
             </Menu>
           </Box>
             </Toolbar>
