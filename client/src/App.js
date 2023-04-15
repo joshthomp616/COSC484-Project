@@ -3,6 +3,9 @@ import { Routes, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Services from './pages/Services';
+import AboutUs from './pages/AboutUs';
+
 
 import './App.css';
 
@@ -19,8 +22,13 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route path="/" element={<Login /> } />
-          <Route path="home" element={<Home />} />
+
+          
+          <Route path="/login" element={<Login /> } />
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<AboutUs />} />
+        
         </Routes>
     </div>
   );
