@@ -5,9 +5,11 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
-
+import Account from "./pages/Account";
+import Appointment from "./pages/Appointment";
 
 import './App.css';
+
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -22,13 +24,12 @@ function App() {
   return (
     <div className="App">
         <Routes>
-
-          
           <Route path="/login" element={<Login /> } />
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/appointment" element={<Appointment/>} />
+          <Route path="/account" element={<Account/>}/>
           <Route path="/about" element={<AboutUs />} />
-        
         </Routes>
     </div>
   );
