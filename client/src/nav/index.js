@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, 
-  Menu, MenuList, MenuItem, Popper, Paper, Button, Tooltip, Avatar, TextField } from '@mui/material';
+  Menu, MenuList, MenuItem, Popper, Paper, Button, Tooltip, Avatar, TextField, ClickAwayListener } from '@mui/material';
 import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -42,11 +42,16 @@ const navigate = useNavigate();
     setAnchorElUser(null);
   };
 
-  const handleOpenLogin = (event) => {
+  const handleOpenLogin = () => {
     showLoginFunction((prev) => !prev);
     if(showLogin) {
       processLogin((prev) => !prev)
     }
+  }
+
+  const handleCloseLogin = (event) => {
+    showLoginFunction((prev) => !prev);
+    
   }
 
   const handleLogout = (event) => {
@@ -193,14 +198,16 @@ const navigate = useNavigate();
                       placement='bottom-end'
                     >
                       <Paper>
-                        <MenuList>
-                          <MenuItem>
-                            <TextField required label="Username"/>
-                          </MenuItem>
-                          <MenuItem>
-                            <TextField required label="Passowrd"/>
-                          </MenuItem>
-                        </MenuList>
+                        <ClickAwayListener onClickAway={handleCloseLogin}>
+                          <MenuList>
+                            <MenuItem>
+                              <TextField required label="Username"/>
+                            </MenuItem>
+                            <MenuItem>
+                              <TextField required label="Passowrd"/>
+                            </MenuItem>
+                          </MenuList>
+                        </ClickAwayListener>
                       </Paper>
                     </Popper>
                   </Box>
@@ -221,7 +228,7 @@ const navigate = useNavigate();
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={() => navigate("/account")}>
                   <Typography textAlign="center">Account</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
