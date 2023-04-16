@@ -10,6 +10,7 @@ const pages = [
   ['Services', 'services'], 
   ['Make Appointment', 'appointment'], 
   ['About Us', 'about']
+ // ['Contact Us', 'Contact']
 ];
 const settings = ['Account', 'Logout'];
 
@@ -141,7 +142,7 @@ const navigate = useNavigate();
                   textDecoration: 'none',
                 }}
               >
-                COMPANY NAME
+                AUTO SPA 
               </Typography>
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {

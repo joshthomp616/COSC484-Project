@@ -1,14 +1,7 @@
 import * as React from 'react';
 import Navbar from '../../nav';
 import { useState } from 'react';
-import {
-  Container,
-  TextField,
-  Button,
-  Typography,
-  Grid,
-  Paper,
-} from '@mui/material';
+import {Container,TextField,Button, Typography, Grid, Paper,} from '@mui/material';
 
 var Appointment = () => {
   var [date, setDate] = useState('');
@@ -30,11 +23,12 @@ var Appointment = () => {
   
   return (
     <div
+    
       style={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '130vh',
+        height: '120vh',
       }}
     >
       <Container maxWidth="sm">
