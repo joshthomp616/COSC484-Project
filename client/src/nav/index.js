@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Typography, Container, Box, IconButton, 
   Menu, MenuList, MenuItem, Popper, Paper, Button, Tooltip, Avatar, TextField, ClickAwayListener } from '@mui/material';
 import * as React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import DriveEtaIcon from '@mui/icons-material/DriveEta';
 import { color } from '@mui/system';
@@ -13,10 +13,13 @@ const pages = [
 ];
 const settings = ['Account', 'Logout'];
 
+
+
 //ResponsiveAppBar Template taken and modified from Material UI App Bar example
 //https://mui.com/material-ui/react-app-bar/
 function ResponsiveAppBar() {
 const navigate = useNavigate();
+// const history = useHistory();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -43,11 +46,19 @@ const navigate = useNavigate();
   };
 
   const handleOpenLogin = () => {
+  //   if (signedIn) {
+  //     // if already signed in, navigate to account settings page
+  //     history.push('/account');
+  //   } else {
+  //     // if not signed in, navigate to login page
+  //     history.push('/login');
+  //   }
     showLoginFunction((prev) => !prev);
     if(showLogin) {
-      processLogin((prev) => !prev)
+      processLogin((prev) => !prev);
     }
   }
+  
 
   const handleCloseLogin = (event) => {
     showLoginFunction((prev) => !prev);
@@ -61,10 +72,10 @@ const navigate = useNavigate();
 
   return (
     <>
-      <AppBar ref={loginRef} position="static" sx={{bgcolor: 'primary.main', color: 'black.main'}}>
+    /<AppBar ref={loginRef} position="static" sx={{bgcolor: 'primary.main', color: 'black.main'}}>
         <Container maxWidth="x1">
             <Toolbar disableGutters>
-              {/*Company name for full display*/}
+              {/* Company name for full display */}
               <DriveEtaIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
               <Typography
                 variant="h6"
@@ -81,6 +92,7 @@ const navigate = useNavigate();
                   textDecoration: 'none',
                 }}
               >
+      
                 COMPANY NAME
               </Typography>
               {/*Drop down menu for samll display*/}
