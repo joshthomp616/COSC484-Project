@@ -94,7 +94,7 @@ const navigate = useNavigate();
                 }}
               >
       
-                COMPANY NAME
+               AUTO SPA
               </Typography>
               {/*Drop down menu for samll display*/}
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
