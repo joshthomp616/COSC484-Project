@@ -1,44 +1,21 @@
-/*
-h1 {
-  text-align: center;
-}
-
-/* Style the title container */
-/*
-h1 {
-  background-color: #f2f2f2;
-  color: #000;
-  padding: 20px;
-  margin-top: 0;
-}
-
-/* Style the service packages */
-.service-package {
-  background-color: #7978783a;
-  padding: 20px;
-  display:inline-flex;
+.service-packages , h3 {
+  color:black;
+  display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-
-  width: 100%;
-  margin: 10px;
-  text-align: center;
+  background-color: rgba(128, 128, 128, 0.63);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.service-package button {
-  height: fit-content;
-
+.image-container {
+  display: flex;
+  justify-content: space-evenly;
+  
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-
-/* Adjust service packages when the screen size changes */
-@media (max-width: 768px) {
-  .service-package {
-    width: 100%;
-  }
-}
-@media (max-width: 480px) {
-  .service-package {
-    width: 100%;
-  }
+.image-container img {
+  width: 45%;
+  height: auto;
 }

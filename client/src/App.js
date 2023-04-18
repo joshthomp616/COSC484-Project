@@ -7,13 +7,12 @@ import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
 import Account from "./pages/Account";
 import Appointment from "./pages/Appointment";
-
+import ContactUs from "./pages/ContactUs";
 import './App.css';
 
 
 function App() {
   const [data, setData] = React.useState(null);
-
   React.useEffect(() => {
     fetch("/api")
     .then((res) => res.json())
@@ -30,6 +29,7 @@ function App() {
           <Route path="/appointment" element={<Appointment/>} />
           <Route path="/account" element={<Account/>}/>
           <Route path="/about" element={<AboutUs />} />
+         // <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
     </div>
   );
