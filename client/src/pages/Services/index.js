@@ -65,7 +65,7 @@ export default function Services() {
               <li key={index}>{item}</li>
             ))}
           </ul>
-          <p>Pricing:</p>
+          <h2>Pricing:</h2>
           <ul>
             <li>Sedan: ${service.price.sedan}</li>
             <li>Midsize SUV: ${service.price.midsizeSUV}</li>
