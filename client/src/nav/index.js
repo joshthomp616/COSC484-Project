@@ -10,7 +10,6 @@ const pages = [
   ['Services', 'services'], 
   ['Make Appointment', 'appointment'], 
   ['About Us', 'about']
- // ['Contact Us', 'Contact']
 ];
 const settings = ['Account', 'Logout'];
 
@@ -73,7 +72,7 @@ const navigate = useNavigate();
 
   return (
     <>
-    /<AppBar ref={loginRef} position="static" sx={{bgcolor: 'primary.main', color: 'black.main'}}>
+    <AppBar ref={loginRef} position="static" sx={{bgcolor: 'primary.main', color: 'black.main'}}>
         <Container maxWidth="x1">
             <Toolbar disableGutters>
               {/* Company name for full display */}
