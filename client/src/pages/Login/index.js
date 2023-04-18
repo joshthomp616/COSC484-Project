@@ -41,6 +41,9 @@ import Navbar from '../../nav'
   // }
 
   return (
+    <><div><Navbar />
+    </div>
+  
     <div>
       <form onSubmit={handleSubmit}>
         <Box display = "flex" 
@@ -92,7 +95,7 @@ import Navbar from '../../nav'
           </Button>
         </Box>
       </form>
-    </div>
+    </div></>
     
   );
 };

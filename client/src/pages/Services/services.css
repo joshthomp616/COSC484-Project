@@ -1,8 +1,10 @@
 .service-packages , h3 {
+
+  font-size: 1.5rem;
   color:black;
   display: flex;
   justify-content: space-between;
-  background-color: rgba(128, 128, 128, 0.63);
+  background-color: whitesmoke;
   padding: 20px;
   margin-bottom: 20px;
 }
