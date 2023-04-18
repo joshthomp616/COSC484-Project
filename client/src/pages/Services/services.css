@@ -1,0 +1,23 @@
+.service-packages , h3 {
+
+  font-size: 1.5rem;
+  color:black;
+  display: flex;
+  justify-content: space-between;
+  background-color: whitesmoke;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-evenly;
+  
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  width: 45%;
+  height: auto;
+}

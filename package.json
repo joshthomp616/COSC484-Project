@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/NoKra/COSC484-Project#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "@material-ui/core": "^4.12.4",
+    "express": "^4.18.2",
+    "react-scripts": "^5.0.1"
   }
 }

@@ -3,12 +3,16 @@ import { Routes, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
-
+import Services from './pages/Services';
+import AboutUs from './pages/AboutUs';
+import Account from "./pages/Account";
+import Appointment from "./pages/Appointment";
+import ContactUs from "./pages/ContactUs";
 import './App.css';
+
 
 function App() {
   const [data, setData] = React.useState(null);
-
   React.useEffect(() => {
     fetch("/api")
     .then((res) => res.json())
@@ -19,8 +23,13 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route path="/" element={<Login /> } />
-          <Route path="home" element={<Home />} />
+          <Route path="/login" element={<Login /> } />
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/appointment" element={<Appointment/>} />
+          <Route path="/account" element={<Account/>}/>
+          <Route path="/about" element={<AboutUs />} />
+         // <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
     </div>
   );
