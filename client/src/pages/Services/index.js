@@ -33,19 +33,21 @@ const allServices = [
   ["Premium Package", premiumPrices, premiumServices]]
 
 
-
+const initialPrices = [basicPrices['sedan'], standardPrices['sedan'], premiumPrices['sedan']]
+const allPrices = [basicPrices, standardPrices, premiumPrices];
+const initalSelected = ['sedan', 'sedan', 'sedan']
 
 function Services() {
-  const [prices, setPrice] = React.useState([
-    basicPrices, standardPrices, premiumPrices
-  ]);
+  const [prices, setPrices] = React.useState(initialPrices);
+  const [selected, setSelected] = React.useState(initalSelected);
+
 
   
 
   return (
     <>
       <Navbar />
-      <Box sx = {{flexGrow: 1, m: 2}}>
+      <Box sx = {{flexGrow: 1, m: 2, display: {xs: 'none', md: 'flex' }, flexDirection: "column"}}>
         { allServices.map((service, index) =>(
           <Card sx={{minWidth: 300, m: 2, boxShadow: "5px 5px 10px #22e3c3"}}>
           <CardHeader
@@ -69,21 +71,17 @@ function Services() {
                 <FormControl>
                   <FormLabel id="basicPackageRadioGroupLabel">Car Type</FormLabel>
                   <RadioGroup 
-                  defaultValue="sedan" 
+                  defaultValue={selected[index]} 
                   aria-labelledby='basicPackageRadioGroupLabel'
-                  onChange={
-                  {/*
-                    
-                    (event) => {
-
-                      const updatedPrices = prices.map(price => {
-                        if(price.package === index) {
-                          price.currentPrice = price[event.target.value]
-                        } 
-                      })
-                      setPrice(updatedPrices);
-                  }} 
-                  */}}
+                  onChange={(event) => {
+                    setPrices(existingPrices => {
+                        return [
+                          ...existingPrices.slice(0, index),
+                          existingPrices[index] = allPrices[index][event.target.value],
+                          ...existingPrices.slice(index + 1),
+                        ]
+                    })
+                  }}
                   >
                     <FormControlLabel value="sedan" control={<Radio/>} label="Sedan"/>
                     <FormControlLabel value="midsize" control={<Radio/>} label="Midsize SUV"/>
@@ -93,7 +91,7 @@ function Services() {
               </Grid>
               <Grid item xs={3}>
                 <Typography variant="h6">
-                  Price: {prices[index].currentPrice}
+                  Price: {prices[index]}
                 </Typography>
               </Grid>
             </Grid>
@@ -101,28 +99,62 @@ function Services() {
         </Card>
         ))
         }      
-       
+      {/*For xs services */}
       </Box>
-      {/*
-      <h1>Services</h1>
-      {servicePackages.map((service) => (
-        <div className = "service-packages" key={service.name}>
-          <h2>{service.name}</h2>
-          <ul>
-            {service.items.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-          <p>Pricing:</p>
-          <ul>
-            <li>Sedan: ${service.price.sedan}</li>
-            <li>Midsize SUV: ${service.price.midsizeSUV}</li>
-            <li>Fullsize SUV: ${service.price.fullsizeSUV}</li>
-          </ul>
-        </div>
-
-      ))}
-      */}
+      <Box sx = {{flexGrow: 1, m: 2, display: {xs: 'flex', md: 'none' }, flexDirection: "column"}}>
+        { allServices.map((service, index) =>(
+          <Card sx={{minWidth: 300, m: 2, boxShadow: "5px 5px 10px #22e3c3"}}>
+          <CardHeader
+            title = {service[0]}
+          />
+          <CardContent>
+            <Grid container rowSpacing={2} alignItems="center">
+              <Grid item xs={12}>
+                <List>
+                  {service[2].map((feature) => (
+                    <ListItem disablePadding>
+                      <ListItemIcon>
+                        <DoubleArrowSharpIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={feature}/>
+                    </ListItem>
+                  ))}
+                </List>
+              </Grid>
+              <Grid item xs={3}>
+                <FormControl>
+                  <FormLabel id="basicPackageRadioGroupLabel">Car Type</FormLabel>
+                  <RadioGroup 
+                  defaultValue="sedan"
+                  key={index} 
+                  aria-labelledby='basicPackageRadioGroupLabel'
+                  onChange={(event) => {
+                    setPrices(existingPrices => {
+                        return [
+                          ...existingPrices.slice(0, index),
+                          existingPrices[index] = allPrices[index][event.target.value],
+                          ...existingPrices.slice(index + 1),
+                        ]
+                    })
+                  }}
+                  >
+                    <FormControlLabel value="sedan" control={<Radio/>} label="Sedan"/>
+                    <FormControlLabel value="midsize" control={<Radio/>} label="Midsize SUV"/>
+                    <FormControlLabel value="fullsize" control={<Radio/>} label="Fullsize SUV"/>
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid item xs={3}>
+                <Typography variant="h6">
+                  Price: {prices[index]}
+                </Typography>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+        ))
+        }      
+      </Box>
       <h3>Before & After</h3>
       
       <div className="image-container">
