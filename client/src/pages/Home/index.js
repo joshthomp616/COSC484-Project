@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../nav'
 import './home.css';
-import { Button } from '@mui/material';
+import { Container,Button } from '@mui/material';
 
 export default function Home() {
   return (
