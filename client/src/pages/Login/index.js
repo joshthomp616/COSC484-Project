@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, TextField, Typography, Box} from '@mui/material'
 import { Link, useNavigate} from 'react-router-dom';
 import Navbar from '../../nav'
-
+import {hashPassword} from './PasswordHash';
 
 // export default function Login() {
   // const minRowSpacing = 0;
@@ -28,9 +28,10 @@ import Navbar from '../../nav'
       }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
       e.preventDefault();
-      console.log(input);
+      const hashedPassword = await hashPassword(input.password);
+      console.log(hashedPassword);
     }
 
     const resetState =() =>{
