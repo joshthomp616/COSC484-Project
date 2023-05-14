@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, TextField, Typography, Box} from '@mui/material'
 import { Link, useNavigate} from 'react-router-dom';
 import Navbar from '../../nav'
-import {hashPassword} from './PasswordHash';
+import {hashPassword }from './PasswordHash';
 
 // export default function Login() {
   // const minRowSpacing = 0;
