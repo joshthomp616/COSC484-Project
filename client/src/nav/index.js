@@ -9,7 +9,7 @@ import { color } from '@mui/system';
 const pages = [
   ['Services', 'services'], 
   ['Make Appointment', 'appointment'], 
-  ['About Us', 'about']
+  ['About Us', 'about'],['Contact Us','contact']
 ];
 const settings = ['Account', 'Logout'];
 
