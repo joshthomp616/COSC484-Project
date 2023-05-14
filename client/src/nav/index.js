@@ -45,6 +45,11 @@ const navigate = useNavigate();
     setAnchorElUser(null);
   };
 
+  //TODO: TEMPORARY
+  const handleSignUpClick = () => {
+    navigate("/login");
+  }
+
   const handleOpenLogin = () => {
   //   if (signedIn) {
   //     // if already signed in, navigate to account settings page
@@ -143,12 +148,12 @@ const navigate = useNavigate();
                 component="a"
                 href="/"
                 sx={{
-                  mr: 2,
+                  mr: 0,
                   display: { xs: 'flex', md: 'none' },
                   flexGrow: 1,
                   fontFamily: 'monospace',
                   fontWeight: 700,
-                  letterSpacing: '.3rem',
+                  letterSpacing: '.2rem',
                   color: 'inherit',
                   textDecoration: 'none',
                 }}
@@ -176,7 +181,22 @@ const navigate = useNavigate();
                   </IconButton>
                 </Tooltip>
                  : !showLogin 
-                 ? <Button 
+                 ?<Box sx={{ display: 'flex', flexDirection: 'row', ml: 0}}>
+                  <Button
+                    variant='contained'
+                    onClick={handleSignUpClick}
+                    sx = {{
+                      my: 2,
+                      bgcolor: 'primary.darker',
+                      color: 'white.main',
+                      frontWeight: 'bold', 
+                      display: 'block',
+                      mr: 2
+                    }}
+                  >
+                    SignUp
+                  </Button>
+                  <Button 
                     variant="contained"
                     onClick={handleOpenLogin}
                     sx={{
@@ -189,6 +209,7 @@ const navigate = useNavigate();
                   >
                   Login
                   </Button> 
+                  </Box>
                   :
                   <Box>
                     <Button
