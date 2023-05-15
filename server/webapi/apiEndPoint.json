@@ -1,0 +1,66 @@
+{
+    "apiUrl": "autospaapi.azurewebsites.net",
+    "Appointment_EndPoints" : {
+        "getRequest":{
+            "getAllAppointments" : "/Appointment",
+            "getAppointmentsByCustomerId": "/Appointment/customer/{customerId}",
+            "getAppointmentsByServiceId": "/Appointment/service/{serviceId}",
+            "getAppointmentsByDate": "/Appointment/appointmentsDate/{date}",
+            "getAnAppointmentByCustomerId&Date": "/Appointment/customerAppointment/{customerId}/{date}"
+        },
+        "postRequest":"/Appointment/CreateAppointment",
+        "putReques": "/Appointment/{customerId}/{appDate}",
+        "deleteRequest": "/Appointment/{customerId}/{date}"
+
+    },
+    "Customer_Endpoints": {
+        "getRequest":{
+            "getAllCustomers": "/Customer",
+            "getCustomerById": "/Customer/{custId}",
+            "getCustomersByFirstName": "/Customer/firstname/{Fname}",
+            "getCustomersByLastName": "/Customer/lastname/{Lname}"
+        },
+        "postRequest":{
+            "creatCustomer": "/Customer/CreateCustomer"
+        },
+        "putRequest": {
+            "editCustomer":"/Customer/{customerId}"
+        },
+        "deleteRequest": {
+            "deleteCustomer":"/Customer/{customerId}"}
+    },
+    "Service_Endpoints":{
+        "getRequest":{
+            "getAllServices": "/Service",
+            "getServiceById":"/Service/{id}",
+            "getServiceByName": "/Service/servicename/{name}"
+        },
+        "postRequest": {
+            "creatService": "/Service/CreateService"
+        },
+        "putRequest":{
+            "editService": "/Service/{serviceId}"
+        },
+        "deleteRequest":{
+            "deletetService": "/Service/{serviceId}"
+        }
+    },
+    "Vehicle_Endpoints":{
+        "getRequest":{
+            "getAllVehicles": "/Vehicle",
+            "getVehicleById": "/Vehicle/{Id}",
+            "getVehiclesByDate": "/Vehicle/date/{year}",
+            "getVehiclesByCustomerId": "/Vehicle/customer/{custId}",
+            "getVehiclesByMake": "/Vehicle/vehicleMake/{make}"
+        },
+        "putRequest":{
+            "editVehicle":"/Vehicle/{vehicleId}"
+        },
+        "postRequest":{
+            "createVehicle": "/Vehicle/CreateVehicle"
+        },
+        "deleteRequest":{
+            "deleteVehicle": "/Vehicle/{vehicleId}"
+        }
+    }
+}
