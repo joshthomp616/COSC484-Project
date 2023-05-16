@@ -9,7 +9,12 @@ import Account from "./pages/Account";
 import Appointment from "./pages/Appointment";
 import ContactUs from "./pages/ContactUs";
 import './App.css';
+<<<<<<< HEAD
 import AppointmentForm from './pages/AdminAppoinment/index';
+=======
+import Apps from "./pages/Admin/components/App";
+
+>>>>>>> 88673249830347bdb355432585ad43746a2263f8
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -29,8 +34,12 @@ function App() {
           <Route path="/appointment" element={<Appointment/>} />
           <Route path="/account" element={<Account/>}/>
           <Route path="/about" element={<AboutUs />} />
+<<<<<<< HEAD
          // <Route path="/contact" element={<ContactUs />} />
          <Route path="/adminApp" element={<AppointmentForm />} />
+=======
+
+>>>>>>> 88673249830347bdb355432585ad43746a2263f8
         </Routes>
     </div>
   );
