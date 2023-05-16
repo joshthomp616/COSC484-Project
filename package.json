@@ -20,6 +20,8 @@
   "homepage": "https://github.com/NoKra/COSC484-Project#readme",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "react-scripts": "^5.0.1"
   }

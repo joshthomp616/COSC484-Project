@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Button, TextField, Typography, Box} from '@mui/material'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import Navbar from '../../nav'
-
+import {hashPassword }from './PasswordHash';
 
 // export default function Login() {
   // const minRowSpacing = 0;
@@ -12,7 +12,9 @@ import Navbar from '../../nav'
   // const loginContainerRef = React.useRef(null);
 
   const Login = () => {
-    const [isSignUp, setIsSignUp] = React.useState(false);
+    const navigate = useNavigate();
+
+    const [isSignUp, setIsSignUp] = React.useState(true);
     const [input, setInput] = React.useState({
       username: "",
       email: "",
@@ -26,14 +28,18 @@ import Navbar from '../../nav'
       }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
       e.preventDefault();
-      console.log(input);
+      const hashedPassword = await hashPassword(input.password);
+      console.log(hashedPassword);
     }
 
     const resetState =() =>{
-      setIsSignUp(!isSignUp);
-      setInput({username:"", email: "", password: ""});
+        navigate("/");
+    }
+
+    const signUpClicked = () => {
+      navigate("/");
     }
     // console.log(isSignUp);
   //   showLogin((prev) => !prev)
@@ -41,6 +47,9 @@ import Navbar from '../../nav'
   // }
 
   return (
+    <><div><Navbar />
+    </div>
+  
     <div>
       <form onSubmit={handleSubmit}>
         <Box display = "flex" 
@@ -85,14 +94,14 @@ import Navbar from '../../nav'
                variant="outlined"
                 placeholder='Password' />
 
-          <Button type ="submit" sx = {{marginTop:3, borderRadius:3}} variant= "contained" color= "primary" > {isSignUp ? "SignUp" : "Login"}</Button>
+          <Button type ="submit" onClick = {resetState} sx = {{marginTop:3, borderRadius:3}} variant= "contained" color= "primary" > {isSignUp ? "SignUp" : "Login"}</Button>
 
           <Button onClick = {resetState}   sx = {{marginTop:3, borderRadius:3}}>
             {isSignUp ? "Login" : "SignUp"}
           </Button>
         </Box>
       </form>
-    </div>
+    </div></>
     
   );
 };
