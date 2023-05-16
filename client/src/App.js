@@ -9,6 +9,7 @@ import Account from "./pages/Account";
 import Appointment from "./pages/Appointment";
 import ContactUs from "./pages/ContactUs";
 import './App.css';
+import Apps from "./pages/Admin/components/App";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/account" element={<Account/>}/>
           <Route path="/about" element={<AboutUs />} />
          // <Route path="/ContactUs" element={<ContactUs />} />
+         <Route path="/admin" element={<Apps />} />
         </Routes>
     </div>
   );

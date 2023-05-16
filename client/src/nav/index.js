@@ -205,6 +205,19 @@ const navigate = useNavigate();
                     >
                     Submit
                     </Button>
+                    <Button
+                  variant='contained'  onClick={() => handleCloseNavMenu(['Admin', 'admin'])}
+                    sx={{
+                      my: 2,
+                      bgcolor: 'primary.darker',
+                      color: 'white.main',
+                      frontWeight: 'bold', 
+                      display: 'block',
+                      mr: 2
+                    }}
+               >
+                Admin Login
+               </Button>
                     <Popper
                       open={showLogin}
                       anchorEl={loginRef.current}
