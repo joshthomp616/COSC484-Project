@@ -9,7 +9,7 @@ import Account from "./pages/Account";
 import Appointment from "./pages/Appointment";
 import ContactUs from "./pages/ContactUs";
 import './App.css';
-
+import AppointmentForm from './pages/AdminAppoinment/index';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -30,6 +30,7 @@ function App() {
           <Route path="/account" element={<Account/>}/>
           <Route path="/about" element={<AboutUs />} />
          // <Route path="/contact" element={<ContactUs />} />
+         <Route path="/adminApp" element={<AppointmentForm />} />
         </Routes>
     </div>
   );
