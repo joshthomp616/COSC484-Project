@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(2, 12, 12);
+  }
+  
+  h2{
+    color: black;
+    text-align: center;
+  }
+  .appointment-page {
+    background-color: rgb(30, 215, 221);
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .input-group label {
+    margin-right: 10px;
+    color: black;
+  }
+  
+  .input-group input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  
+  .appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: darkgray;
+    color: white;
+  }
+  
+  .appointment-table th,
+  .appointment-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .appointment-table th {
+    background-color: #333;
+  }
+  .spaced-button {
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    
+  }
+  
+  .spaced-button:hover {
+    background-color: gray;
+  }
+  .spaced-button {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+ 
